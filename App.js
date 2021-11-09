@@ -2,16 +2,17 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const NewText = () => {
+const NewText = ({ texto, type }) => {
 	return <Text>
-		Me llamo Jonathan
+		{type === 1 ?`Hola, me llamo ${texto}` : `Nos vemos ${texto}`}
 	</Text>
 }
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <NewText/>
+      <NewText texto={'Jonathan'} type={1} />
+      <NewText texto={'Mundo'} type={2} />
       <StatusBar style="auto" />
     </View>
   );
