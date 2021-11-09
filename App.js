@@ -2,18 +2,19 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const NewText = ({ texto, type }) => {
+const NewText = ({ children }) => {
 	return <Text>
-		{type === 1 ?`Hola, me llamo ${texto}` : `Nos vemos ${texto}`}
+		{children}
 	</Text>
 }
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <NewText texto={'Jonathan'} type={1} />
-      <NewText texto={'Mundo'} type={2} />
-      <StatusBar style="auto" />
+      <NewText>
+				Me llamo Jonathan, y
+				<NewText> soy ingeniero de sistemas</NewText>
+			</NewText>
     </View>
   );
 }
