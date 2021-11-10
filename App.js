@@ -6,7 +6,7 @@ const NewText = () => {
 	const updateText = () => {
 		setText(!text)
 	}
-	return <Text onPress={updateText} >
+	return <Text style={styles.text} onPress={updateText} >
 		{text ? "Hola mundo" : "Hasta luego mundo" }
 	</Text>
 }
@@ -20,6 +20,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+	text: {
+		color: 'green',
+		fontSize: 48,
+	},
   container: {
     flex: 1,
     backgroundColor: '#fff',
