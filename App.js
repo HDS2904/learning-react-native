@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const NewText = ({ children }) => {
-	return <Text>
-		{children}
+const NewText = () => {
+	const [text, setText] = useState(true);
+	const updateText = () => {
+		setText(!text)
+	}
+	return <Text onPress={updateText} >
+		{text ? "Hola mundo" : "Hasta luego mundo" }
 	</Text>
 }
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <NewText>
-				Me llamo Jonathan, y
-				<NewText> soy ingeniero de sistemas</NewText>
-			</NewText>
+      <NewText />
     </View>
   );
 }
