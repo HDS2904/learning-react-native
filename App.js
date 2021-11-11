@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, TouchableHighlight, TouchableNativeFeedback, TouchableOpacity, TouchableWithoutFeedback, View } from 'react-native';
 
 export default function App() {
 	const [newText, setNewText] = useState('');
@@ -13,15 +13,62 @@ export default function App() {
 				onChangeText={i => setNewText(i)}
 				defaultValue = {newText}
 			/>
-			<Button
+			{/* <TouchableHighlight
+				underlayColor={'#999'}
+				activeOpacity={0.2}
 				title='Texto enviado con exito'
-				onPress={()=>{setSubmit(newText);alert('Texto enviado con exito')}}
-			/>
+				onPress={()=>{
+					setSubmit(newText);
+					alert('Texto enviado con exito')
+				}}
+			/> */}
+			{/* <TouchableNativeFeedback
+				background={TouchableNativeFeedback.Ripple('#00f',true)}
+				onPress={()=>{
+					setSubmit(newText);
+					alert('Texto enviado con exito')
+				}}
+			>
+				<View style={styles.view}>
+					<Text>Aceptar</Text>
+				</View>
+			</TouchableNativeFeedback> */}
+			{/* <TouchableOpacity
+				style={styles.TouchableOpacity}
+				onPress={()=>{
+					setSubmit(newText);
+					alert('Texto enviado con exito')
+				}}
+			>
+				<View style={styles.view}>
+					<Text>Aceptar</Text>
+				</View>
+			</TouchableOpacity> */}
+			<TouchableWithoutFeedback
+				style={styles.TouchableOpacity}
+				onPress={()=>{
+					setSubmit(newText);
+					alert('Texto enviado con exito')
+				}}
+			>
+				<View style={styles.view}>
+					<Text>Aceptar</Text>
+				</View>
+			</TouchableWithoutFeedback>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+	TouchableOpacity: {
+		backgroundColor: '#EEE',
+	},
+	view: {
+		height: 40,
+		width: 300,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 	input: {
 		height: 42,
 		borderBottomColor: '#ccc',
