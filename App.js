@@ -1,23 +1,37 @@
-import React from 'react';
-import { ImageBackground, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, Modal, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+	const [modal, setModal] = useState(false);
   return (
     <View style={styles.container}>
-      <ImageBackground
-				style={styles.photo}
-				source={{uri: 'http://placekitten.com/200/300'}}
+      <Modal
+				animationType="slide"
+				transparent={true}
+				visible={modal}
 			>
-				<Text>Image Tests</Text>
-			</ImageBackground>
+				<View style={styles.center}>
+					<View style={styles.content}>
+						<Text>Soy un Modal</Text>
+						<Button title='Cerrar Modal' onPress={()=>{setModal(!modal)}} />
+					</View>
+				</View>
+			</Modal>
+			<Button title='Abrir Modal' onPress={()=>{setModal(!modal)}} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-	photo: {
-		height: 250,
-		width: 250,
+	content: {
+		backgroundColor: 'grey',
+		width: 300,
+		height: 250
+	},
+	center: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
 	},
   container: {
     flex: 1,
