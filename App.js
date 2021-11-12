@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-import { Button, Modal, StyleSheet, Text, View } from 'react-native';
+import { Alert, Button, Modal, StyleSheet, Text, View } from 'react-native';
+
+const createDialog = () => Alert.alert(
+	'Alerta de prueba',
+	'Esta alerta es una prueba para verificar que todo anda bien',
+	[
+		{
+			text: 'Cancelar',
+			onPress: () => {console.log("Cancelar")},
+			style: 'cancel'
+		},
+		{
+			text: 'Aceptar',
+			onPress: () => {console.log("Aceptar")},
+			style: 'acept'
+		},
+	]
+)
 
 export default function App() {
-	const [modal, setModal] = useState(false);
+	const [alert, setAlert] = useState(false);
   return (
     <View style={styles.container}>
-      <Modal
-				animationType="slide"
-				transparent={true}
-				visible={modal}
-			>
-				<View style={styles.center}>
-					<View style={styles.content}>
-						<Text>Soy un Modal</Text>
-						<Button title='Cerrar Modal' onPress={()=>{setModal(!modal)}} />
-					</View>
-				</View>
-			</Modal>
-			<Button title='Abrir Modal' onPress={()=>{setModal(!modal)}} />
+			<Button title='Abrir Alerta' onPress={()=>{createDialog()}} />
     </View>
   );
 }
